@@ -1,0 +1,82 @@
+
+
+<h3>Structural Directive</h3><br>
+
+<p *ngIf="showtext">Welcome.... This is Structural Directive- ngIf</p>
+<button class="btn btn-primary" (click)="showFunc()">{{showtext ? "Hide" : "Show"}} Text</button>
+<br>
+
+<h5>ngFor</h5>
+<table border="black" >
+
+    <tr *ngFor="let user of userList">
+        <td>{{user.id}}</td>
+        <td>{{user.name}}</td>
+        <td>{{user.email}}</td>
+    </tr>
+</table>
+
+<br>
+<h5>ngSwitch</h5>
+<select [(ngModel)]="selectedValue">  
+    <option *ngFor="let user of userList;" [value]="user.id" >{{user.name}}</option>  
+</select>
+<div class='row' [ngSwitch]="selectedValue">  
+    &nbsp; <div *ngSwitchCase="'1'">First Value is Selected</div>  
+    &nbsp;<div *ngSwitchCase="'2'">Second Value is Selected</div> 
+    &nbsp;<div *ngSwitchCase="'3'">Third is Selected</div>  
+    &nbsp;<div *ngSwitchDefault>Default Option</div>  
+</div>  
+
+<br>
+<h3>Attribute Directive</h3>
+
+<h5>ngClass</h5>
+<ul>
+    <li *ngFor="let user of userList" [ngClass]="{
+        'text-primary':user.id ===1,
+        'text-success':user.id ===2,
+        'text-danger':user.id ===3,
+        'text-secondary' :user.id ===8
+        }"> {{user.id}} -- {{user.name}} -- {{user.email}}
+    </li>
+
+</ul>
+
+<br>
+<h5>NgStyle</h5>
+<ul>
+    <li *ngFor="let user of userList" [ngStyle]="{'color': user.id >4 ?'red' : 'blue'}">
+        {{user.id}} -- {{user.name}} -- {{user.email}}
+    </li>
+</ul>
+
+<br>
+<h3>Pipes</h3>
+
+<h5>1.Uppercase</h5>
+
+<p>{{title | uppercase }}</p>
+
+<h5>2.Lowercase</h5>
+<p>{{title | lowercase }}</p>
+
+<h5>3.Datepipe</h5>
+<p>{{todaydate | date:'y/M/d'}}</p>
+<p>{{todaydate | date:'d/M/y'}}</p>
+
+<h5>4.Currencypipe</h5>
+<p>{{1000 | currency:'INR'}}</p>
+<p>{{1000 | currency:'USD'}}</p>
+
+<h5>5.JsonPipe</h5>
+<p>{{userList | json}}</p>
+
+<h5>6.Decimal Pipe</h5>
+<p>{{3456.23459 | number:'3.4-4'}}</p>
+
+<h5>7.PercentPipe</h5>
+<p>{{0.456 | percent}}</p>
+
+<h5>8.SlicePipe</h5>
+<p>{{months | slice:2:7}}</p>

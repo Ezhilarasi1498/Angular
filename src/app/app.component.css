@@ -1,0 +1,17 @@
+.container{
+  text-align: center;
+  margin: 24px 0 12px 200px;
+  height: 5%;
+  width: 30%;
+  
+}
+h3{
+    text-align: center;
+    font-variant: small-caps;
+    
+}
+input[type=text], input[type=email],input[type=password]{
+    width:70%;
+    padding: 10px;
+    margin: 5px 0 20px 0;
+    }
