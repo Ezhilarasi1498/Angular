@@ -1,0 +1,68 @@
+  <div class="container">
+    <h4>Angular Template-driven form</h4>
+        <form class="form" #registerForm="ngForm" (ngSubmit)="registerForm.form.valid && submitForm()"
+            [mustMatch]="['password', 'confirmPassword']" novalidate >
+            <label>Title</label>
+            <select  class="form-control" name="title"
+            [(ngModel)] ="model.title" #title="ngModel" required>
+                <option value="Mr">Mr</option>
+                <option value="Mrs">Mrs</option>
+                <option value="Ms">Ms</option>
+            </select>
+            <div class="alert alert-danger" *ngIf="registerForm.submitted && title.errors.required">
+                Title is a required field
+            </div>
+            <label>FirstName</label>
+            <input type="text"  class="form-control" name="firstname"
+            [(ngModel)] ="model.firstname" #firstname="ngModel" required>
+            <div class="alert alert-danger" *ngIf="registerForm.submitted && firstname.errors.required">
+                FirstName is a required field
+            </div>
+            <label>LastName</label>
+            <input type="text"  class="form-control" name="lastname"
+            [(ngModel)] ="model.lastname" #lastname="ngModel" required>
+            <div class="alert alert-danger" *ngIf="registerForm.submitted && lastname.errors.required ">
+                LastName is a required field
+            </div>
+            <label>Email</label>
+            <input type="email"  class="form-control" name="email"
+            [(ngModel)] ="model.email" #email="ngModel" [ngClass]="{ 'is-invalid': registerForm.submitted && email.invalid }"  required email>
+            <div class="alert alert-danger" *ngIf="registerForm.submitted && email.invalid" class="invalid-feedback">
+            <div *ngIf="email.errors.required">
+                Email is a required field
+            </div>
+            <div *ngIf="email.errors.email">
+                Email must be valid email Id
+            </div>
+            </div>
+            <label>Password</label>
+            <input type="password"  class="form-control" name="password"
+            [(ngModel)] ="model.password" #password="ngModel" required >
+            <div *ngIf="registerForm.submitted && password.invalid" class="invalid-feedback" >
+            <div class="alert alert-danger" *ngIf="password.errors.required">
+                Password is a required field
+            </div>
+            <div class="alert alert-danger" *ngIf="password.errors.minlength">
+                Password must be atleast 5 characters
+            </div>
+            </div>
+            
+            <label>Confirm Password</label>
+            <input type="password"  class="form-control" name="confirmPassword"
+            [(ngModel)] ="model.confirmPassword" #confirmPassword="ngModel" required >
+            <div *ngIf="registerForm.submitted && confirmPassword.invalid" class="invalid-feedback">
+            <div class="alert alert-danger" *ngIf="confirmPassword.errors.required">
+                ConfirmPassword is a required field
+            </div>
+            <div class="alert alert-danger" *ngIf="confirmPassword.errors.mustMatch">
+                Password and ConfirmPassword must match
+            </div>
+            </div>
+             <br>
+            <input type="checkbox" >&nbsp;I Agree to the terms and Conditions<br><br>
+    
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    
+ 

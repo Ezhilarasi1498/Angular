@@ -1,5 +1,5 @@
-
-
+<!-- 
+<div class="container">
 <h3>Structural Directive</h3><br>
 
 <p *ngIf="showtext">Welcome.... This is Structural Directive- ngIf</p>
@@ -22,7 +22,7 @@
     <option *ngFor="let user of userList;" [value]="user.id" >{{user.name}}</option>  
 </select>
 <div class='row' [ngSwitch]="selectedValue">  
-    &nbsp; <div *ngSwitchCase="'1'">First Value is Selected</div>  
+    &nbsp;<div *ngSwitchCase="'1'">First Value is Selected</div>  
     &nbsp;<div *ngSwitchCase="'2'">Second Value is Selected</div> 
     &nbsp;<div *ngSwitchCase="'3'">Third is Selected</div>  
     &nbsp;<div *ngSwitchDefault>Default Option</div>  
@@ -80,3 +80,4 @@
 
 <h5>8.SlicePipe</h5>
 <p>{{months | slice:2:7}}</p>
+</div> -->

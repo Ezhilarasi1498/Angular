@@ -1,0 +1,52 @@
+  <div class="container">
+<h4>Angular Reactive form</h4>
+    <form [formGroup]="registerForm" (ngSubmit)="submitForm()">
+        <label>Title</label>
+        <select formControlName="title" class="form-control">
+            <option value="Mr">Mr</option>
+            <option value="Mrs">Mrs</option>
+            <option value="Ms">Ms</option>
+        </select>
+        <div class="alert alert-danger" *ngIf="submitted && registerForm.get('title').hasError('required')">
+            Title is a required field
+        </div>
+        <label>FirstName</label>
+        <input type="text" formControlName="firstname" class="form-control">
+        <div class="alert alert-danger" *ngIf="submitted && registerForm.get('firstname').hasError('required')">
+            FirstName is a required field
+        </div>
+        <label>LastName</label>
+        <input type="text" formControlName="lastname" class="form-control">
+        <div class="alert alert-danger" *ngIf="submitted && registerForm.get('lastname').hasError('required')">
+            LastName is a required field
+        </div>
+        <label>Email</label>
+        <input type="email" formControlName="email" class="form-control">
+        <div class="alert alert-danger" *ngIf="submitted && registerForm.get('email').hasError('required')">
+            Email is a required field
+        </div>
+        <div class="alert alert-danger" *ngIf="submitted && registerForm.get('email').hasError('email')">
+            Email must be valid email Id
+        </div>
+        <label>Password</label>
+        <input type="password" formControlName="password" class="form-control"validateEqual="confirmPassword">
+        <div class="alert alert-danger" *ngIf="submitted && registerForm.get('password').hasError('required')">
+            Password is a required field
+        </div>
+        <div class="alert alert-danger" *ngIf="registerForm.get('password').hasError('minlength')">
+            Password must be atleast 5 characters
+        </div>
+        <label>Confirm Password</label>
+        <input type="password" formControlName="confirmPassword" class="form-control"  validateEqual="password">
+        <div class="alert alert-danger" *ngIf="submitted && registerForm.get('confirmPassword').hasError('required')">
+            ConfirmPassword is a required field
+        </div>
+        <div class="alert alert-danger"  *ngIf="submitted && registerForm.get('confirmPassword').hasError('mustMatch')">
+            Password and ConfirmPassword must match
+        </div> <br>
+        <input type="checkbox" formControlName="agree">&nbsp;I Agree to the terms and Conditions<br><br>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+ 
